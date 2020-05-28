@@ -1,11 +1,11 @@
 <template>
   <div :class="jvClass">
-    <div 
+    <div
       v-if="copyable"
       class="jv-tooltip"
     >
-      <span  
-        ref="clip" 
+      <span
+        ref="clip"
         class="jv-button"
         :class="{copied}"
       >
@@ -17,8 +17,8 @@
         </slot>
       </span>
     </div>
-    <div 
-      class="jv-code" 
+    <div
+      class="jv-code"
       :class="{'open': expandCode, boxed}"
     >
       <json-box
@@ -27,13 +27,13 @@
         :sort="sort"
       />
     </div>
-    <div 
-      v-if="expandableCode && boxed" 
-      class="jv-more" 
+    <div
+      v-if="expandableCode && boxed"
+      class="jv-more"
       @click="toggleExpandCode"
     >
-      <span 
-        class="jv-toggle" 
+      <span
+        class="jv-toggle"
         :class="{open: !!expandCode}"
       />
     </div>
@@ -43,7 +43,7 @@
 <script>
 import Vue from 'vue'
 import JsonBox from './json-box'
-import Clipboard from 'clipboard'
+// import Clipboard from 'clipboard'
 import {debounce} from './utils';
 
 export default {
@@ -118,16 +118,16 @@ export default {
       this.onResized()
       this.$refs.jsonBox.$el.addEventListener("resized", this.onResized, true)
     }
-    if (this.copyable) {
-      const clipBoard = new Clipboard(this.$refs.clip, {
-        text: () => {
-          return JSON.stringify(this.value, null, 2)
-        }
-      });
-      clipBoard.on('success', (e) => {
-        this.onCopied(e)
-      })
-    }
+    // if (this.copyable) {
+    //   const clipBoard = new Clipboard(this.$refs.clip, {
+    //     text: () => {
+    //       return JSON.stringify(this.value, null, 2)
+    //     }
+    //   });
+    //   clipBoard.on('success', (e) => {
+    //     this.onCopied(e)
+    //   })
+    // }
   },
   methods: {
     onResized () {
@@ -318,7 +318,7 @@ export default {
 
     &:hover {
       .jv-toggle {
-        top: 50%; 
+        top: 50%;
         color: #111;
       }
 

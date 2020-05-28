@@ -37,8 +37,7 @@ module.exports = {
         ]
     },
     externals: {
-      vue: 'vue',
-      clipboard: 'clipboard'
+      vue: 'vue'
     },
     module: {
         rules: [
